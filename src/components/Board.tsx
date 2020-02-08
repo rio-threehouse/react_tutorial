@@ -19,7 +19,7 @@ export default class Board extends React.Component<renderSquareProps> {
 
   render() {
     return (
-      <div>
+      <>
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -35,7 +35,7 @@ export default class Board extends React.Component<renderSquareProps> {
           {this.renderSquare(7)}
           {this.renderSquare(8)}
         </div>
-      </div>
+      </>
     );
   }
 }
