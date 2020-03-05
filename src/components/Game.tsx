@@ -31,6 +31,8 @@ export default class Game extends React.Component {
     }],
     stepNumber: 0,
     XIsNext: true,
+    value1: "",
+    value2: "",
   }
 
   handleClick(i: number) {
@@ -59,8 +61,15 @@ export default class Game extends React.Component {
     })
   }
 
+  _onChange = (e: any) => {
+    console.log(`${e.target.name}:`, e.target.value);
+    this.setState({
+      [e.target.name]: e.target.value,
+    })
+  }
+
   render() {
-    const history = this.state.history;
+    const { history, value1, value2 } = this.state;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
 
@@ -91,6 +100,19 @@ export default class Game extends React.Component {
         <div className="game-info">
           <div>{status}</div>
           <ol>{moves}</ol>
+        </div>
+        <div className="game-info">
+          <p>フォームテスト。引数の値はなんだろな？</p>
+          <input 
+            value={value1}
+            name="value1" 
+            type="text" 
+            onChange={this._onChange}/>
+          <input 
+            value={value2}
+            name="value2" 
+            type="text" 
+            onChange={this._onChange}/>
         </div>
       </div>
     );
